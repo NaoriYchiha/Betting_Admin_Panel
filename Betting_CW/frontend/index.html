@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список товаров</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .product {
+            padding: 10px;
+            margin: 5px 0;
+            background: #e3e3e3;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Список товаров</h1>
+<div class="container">
+    <div id="product-list">Загрузка...</div>
+</div>
+
+<script>
+    async function fetchProducts() {
+        try {
+            const response = await fetch("http://127.0.0.1:8080/product"); // Запрос к бэкенду
+            if (!response.ok) {
+                throw new Error(`Ошибка: ${response.status}`);
+            }
+
+            const products = await response.json(); // Парсим ответ в формат JSON
+
+            const productList = document.getElementById("product-list");
+            productList.innerHTML = ""; // Очищаем перед добавлением
+
+            // Проверяем, что данные правильно получены
+            console.log(products);
+
+            products.forEach(product => {
+                const div = document.createElement("div");
+                div.className = "product";
+                div.textContent = `ID: ${product.id}, Название: ${product.name}`;
+                productList.appendChild(div);
+            });
+
+        } catch (error) {
+            document.getElementById("product-list").textContent = "Ошибка загрузки данных!";
+            console.error("Ошибка загрузки:", error);
+        }
+    }
+
+    fetchProducts(); // Вызываем при загрузке страницы
+</script>
+
+</body>
+</html>

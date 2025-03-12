@@ -1,0 +1,45 @@
+version: "3.8"
+
+volumes:
+  mysql_data:
+
+networks:
+  demo_network:
+
+services:
+  demo_db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 121212
+      MYSQL_DATABASE: demo_db
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "127.0.0.1:3306:3306"
+    networks:
+      - demo_network
+
+  app:
+    restart: always
+    build: ./backend
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      - demo_db
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:mysql://demo_db:3306/demo_db'
+      SPRING_DATASOURCE_USERNAME: 'root'
+      SPRING_DATASOURCE_PASSWORD: '121212'
+      JAVA_OPTS: '-Xmx512m'
+    networks:
+      - demo_network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "127.0.0.1:3000:80"
+    depends_on:
+      - app
+    networks:
+      - demo_network

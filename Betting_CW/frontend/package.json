@@ -1,0 +1,12 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "vite build",
+    "start": "vite"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "vite": "^5.0.0"
+  }
+}
