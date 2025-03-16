@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="demo_db">
+<dataSource name="betting_db">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.49">
     <root id="1">
       <DefaultCasing>exact</DefaultCasing>
@@ -1084,11 +1084,11 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="292" parent="1" name="demo_db">
-      <IntrospectionTimestamp>2025-03-16.10:08:57</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2025-03-16.08:08:57</LocalIntrospectionTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="293" parent="1" name="betting_db">
+      <IntrospectionTimestamp>2025-03-16.11:41:47</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2025-03-16.09:41:47</LocalIntrospectionTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="294" parent="1" name="root">
@@ -1113,29 +1113,301 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <table id="299" parent="292" name="product">
+    <table id="299" parent="293" name="bets">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <column id="300" parent="299" name="id">
-      <AutoIncrement>4</AutoIncrement>
+    <table id="300" parent="293" name="odds">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="301" parent="293" name="sports_events">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="302" parent="293" name="transaction_logs">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="303" parent="293" name="user_balances">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="304" parent="293" name="users">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <column id="305" parent="299" name="id">
+      <AutoIncrement>1</AutoIncrement>
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="301" parent="299" name="name">
-      <DasType>varchar(255)|0s</DasType>
+    <column id="306" parent="299" name="amount">
+      <DasType>double|0s</DasType>
+      <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <index id="302" parent="299" name="PRIMARY">
+    <column id="307" parent="299" name="bet_date">
+      <DasType>datetime(6)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="308" parent="299" name="status">
+      <DasType>enum(&apos;LOSE&apos;, &apos;PENDING&apos;, &apos;WIN&apos;)|0e</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="309" parent="299" name="event_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="310" parent="299" name="odds_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="311" parent="299" name="user_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <foreign-key id="312" parent="299" name="FK3e439w6rx8fbobjr1xswga303">
+      <ColNames>event_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>sports_events</RefTableName>
+    </foreign-key>
+    <foreign-key id="313" parent="299" name="FKfhaa4v12dnqqig9aa1cgybg0l">
+      <ColNames>odds_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>odds</RefTableName>
+    </foreign-key>
+    <foreign-key id="314" parent="299" name="FK7wiqvktpwwlfp256eelwiibci">
+      <ColNames>user_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>users</RefTableName>
+    </foreign-key>
+    <index id="315" parent="299" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="303" parent="299" name="PRIMARY">
+    <index id="316" parent="299" name="FK3e439w6rx8fbobjr1xswga303">
+      <ColNames>event_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="317" parent="299" name="FKfhaa4v12dnqqig9aa1cgybg0l">
+      <ColNames>odds_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="318" parent="299" name="FK7wiqvktpwwlfp256eelwiibci">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="319" parent="299" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="320" parent="300" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="321" parent="300" name="value">
+      <DasType>double|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="322" parent="300" name="event_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <foreign-key id="323" parent="300" name="FKr0ar75x3e7rksm4p4i2oe8iwr">
+      <ColNames>event_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>sports_events</RefTableName>
+    </foreign-key>
+    <index id="324" parent="300" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="325" parent="300" name="FKr0ar75x3e7rksm4p4i2oe8iwr">
+      <ColNames>event_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="326" parent="300" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="327" parent="301" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="328" parent="301" name="event_date">
+      <DasType>datetime(6)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="329" parent="301" name="event_type">
+      <DasType>enum(&apos;BASKETBALL&apos;, &apos;CS2&apos;, &apos;FOOTBALL&apos;, &apos;HOCKEY&apos;, &apos;TENNIS&apos;)|0e</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="330" parent="301" name="name">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <index id="331" parent="301" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="332" parent="301" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="333" parent="302" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="334" parent="302" name="amount">
+      <DasType>double|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="335" parent="302" name="description">
+      <DasType>varchar(500)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="336" parent="302" name="transaction_date">
+      <DasType>datetime(6)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="337" parent="302" name="type">
+      <DasType>enum(&apos;BET&apos;, &apos;DEPOSIT&apos;, &apos;WITHDRAWAL&apos;)|0e</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="338" parent="302" name="user_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <foreign-key id="339" parent="302" name="FKjnwbqmodm3plddipm3feysfup">
+      <ColNames>user_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>users</RefTableName>
+    </foreign-key>
+    <index id="340" parent="302" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="341" parent="302" name="FKjnwbqmodm3plddipm3feysfup">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="342" parent="302" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="343" parent="303" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="344" parent="303" name="amount">
+      <DasType>double|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="345" parent="303" name="transaction_date">
+      <DasType>datetime(6)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="346" parent="303" name="type">
+      <DasType>enum(&apos;BET&apos;, &apos;DEPOSIT&apos;, &apos;WITHDRAWAL&apos;)|0e</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="347" parent="303" name="user_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="348" parent="303" name="FKfw60yn584dehknpjjufbl72uo">
+      <ColNames>user_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>users</RefTableName>
+    </foreign-key>
+    <index id="349" parent="303" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="350" parent="303" name="FKfw60yn584dehknpjjufbl72uo">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="351" parent="303" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="352" parent="304" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="353" parent="304" name="password">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="354" parent="304" name="role">
+      <DasType>enum(&apos;ADMIN&apos;, &apos;USER&apos;)|0e</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="355" parent="304" name="username">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <index id="356" parent="304" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="357" parent="304" name="UKr43af9ap4edm43mmtq01oddj6">
+      <ColNames>username</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="358" parent="304" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="359" parent="304" name="UKr43af9ap4edm43mmtq01oddj6">
+      <UnderlyingIndexName>UKr43af9ap4edm43mmtq01oddj6</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
