@@ -4,19 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71733857-d905-4d44-998f-7b2e3b1ac3ad" name="Changes" comment="Added a test controller for User">
+    <list default="true" id="71733857-d905-4d44-998f-7b2e3b1ac3ad" name="Changes" comment="Changed a DB name, network name and name of backend part">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/SportsEventController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/EventType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/OutcomeType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/22bd59ae-b928-4b67-8485-9805e531af1d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/22bd59ae-b928-4b67-8485-9805e531af1d.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/22bd59ae-b928-4b67-8485-9805e531af1d/storage_v2/_src_/schema/demo_db.WoR8XA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/22bd59ae-b928-4b67-8485-9805e531af1d/storage_v2/_src_/schema/demo_db.WoR8XA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/Betting_CW.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/Betting_CW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/ProductController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/repository/ProductRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/Odds.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/Odds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/SportsEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/SportsEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/repository/SportsEventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/repository/SportsEventRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/SportsEventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/SportsEventService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/SportsEventServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/SportsEventServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +30,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -94,7 +97,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserServiceTest">
+  <component name="RunManager" selected="Spring Boot.Betting_CW">
     <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="docker" />
       <extension name="coverage">
@@ -140,7 +143,9 @@
       <workItem from="1741956010243" duration="1757000" />
       <workItem from="1742025707437" duration="6000" />
       <workItem from="1742110908216" duration="3100000" />
-      <workItem from="1742114484408" duration="4695000" />
+      <workItem from="1742114484408" duration="8049000" />
+      <workItem from="1742126127330" duration="16000" />
+      <workItem from="1742202726759" duration="5411000" />
     </task>
     <task id="LOCAL-00001" summary="Added security configuration for API handling">
       <option name="closed" value="true" />
@@ -182,7 +187,23 @@
       <option name="project" value="LOCAL" />
       <updated>1742119158017</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added a web test through fetch">
+      <option name="closed" value="true" />
+      <created>1742119200603</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1742119200603</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Changed a DB name, network name and name of backend part">
+      <option name="closed" value="true" />
+      <created>1742119293289</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1742119293289</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +226,8 @@
     <MESSAGE value="Added the repositories and services for entities classes" />
     <MESSAGE value="Added the tests for methods" />
     <MESSAGE value="Added a test controller for User" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a test controller for User" />
+    <MESSAGE value="Added a web test through fetch" />
+    <MESSAGE value="Changed a DB name, network name and name of backend part" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed a DB name, network name and name of backend part" />
   </component>
 </project>
