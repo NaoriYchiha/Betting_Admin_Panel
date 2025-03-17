@@ -27,9 +27,4 @@ public class SportsEvent {
     @Column(nullable = false)
     private EventType eventType; // Тип события (например, CS:GO, Football)
 
-    public enum EventType {
-        CS2, FOOTBALL, BASKETBALL, TENNIS, HOCKEY // Различные типы спорта
-    }
-
-    // Геттеры и сеттеры
 }
