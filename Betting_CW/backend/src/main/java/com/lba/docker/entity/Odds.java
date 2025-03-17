@@ -22,6 +22,9 @@ public class Odds {
     @JoinColumn(name = "event_id", nullable = false)
     private SportsEvent event; // Событие, к которому относится коэффициент
 
-    // Геттеры и сеттеры
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private OutcomeType outcomeType;
+
 }
 
