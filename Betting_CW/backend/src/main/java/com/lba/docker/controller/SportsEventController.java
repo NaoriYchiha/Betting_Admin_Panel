@@ -5,6 +5,7 @@ import com.lba.docker.entity.EventType;
 import com.lba.docker.entity.SportsEvent;
 import com.lba.docker.entity.User;
 import com.lba.docker.service.SportsEventService;
+import com.lba.docker.service.SportsEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,9 @@ public class SportsEventController {
     public SportsEventService sportsEventService;
 
     @GetMapping("/{eventType}")
-    public ResponseEntity<List<SportsEvent>> getSportsEventByType(@PathVariable("eventType") String eventTypeStr) {
+
+    public ResponseEntity<List<SportsEvent>> getSportsEventByType(
+            String eventTypeStr) {
         try {
             EventType eventType = EventType.valueOf(eventTypeStr.toUpperCase()); // Преобразование строки в enum
             List<SportsEvent> sportsEvents = sportsEventService.getEventsByType(eventType);
@@ -39,13 +42,17 @@ public class SportsEventController {
     }
 
     @PostMapping
-    public ResponseEntity<SportsEvent> addSportEvent(@RequestBody SportsEvent sportsEvent){
+    public ResponseEntity<SportsEvent> addSportEvent(
+        @RequestBody SportsEvent sportsEvent) {
         SportsEvent createdSportEvent = sportsEventService.createEvent(sportsEvent);
         return new ResponseEntity<>(createdSportEvent, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<SportsEvent> updateSportEvent(@PathVariable Long id, @RequestBody SportsEvent newEventData) {
+    public ResponseEntity<SportsEvent> updateSportEvent(
+            @PathVariable Long id,
+            @RequestBody SportsEvent newEventData) {
+
         return sportsEventService.getEventById(id)
                 .map(existingEvent -> {
                     // Обновляем только непустые поля
@@ -61,14 +68,13 @@ public class SportsEventController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSportEvent(@PathVariable Long id){
+    public ResponseEntity<Void> deleteSportEvent(
+           @PathVariable Long id) {
         Optional<SportsEvent> sportsEvent = sportsEventService.getEventById(id);
-        if(sportsEvent.isPresent()){
+        if (sportsEvent.isPresent()) {
             sportsEventService.deleteEvent(id);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
-
-
 }

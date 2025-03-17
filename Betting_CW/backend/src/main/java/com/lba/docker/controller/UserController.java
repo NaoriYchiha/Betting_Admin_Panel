@@ -2,6 +2,7 @@ package com.lba.docker.controller;
 
 import com.lba.docker.entity.User;
 import com.lba.docker.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,16 +18,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // Получить пользователя по ID
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         Optional<User> user = userService.findById(id);
         return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    // Создать нового пользователя
     @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody User user) {
+    public ResponseEntity<?> createUser( @RequestBody User user) {
         if (userService.existsByUsername(user.getUsername())) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body("Ошибка: имя пользователя уже занято!");
@@ -35,9 +34,11 @@ public class UserController {
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
-    // Обновить пользователя
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody User newUserData) {
+    public ResponseEntity<?> updateUser(
+            @PathVariable Long id,
+           @RequestBody User newUserData) {
+
         return userService.findById(id)
                 .map(existingUser -> {
                     // Проверка уникальности имени (если передано новое имя)
@@ -60,9 +61,8 @@ public class UserController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    // Удалить пользователя
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteUser( @PathVariable Long id) {
         Optional<User> user = userService.findById(id);
         if (user.isPresent()) {
             userService.deleteUser(id);
