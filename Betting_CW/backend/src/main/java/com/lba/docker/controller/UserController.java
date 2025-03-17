@@ -26,21 +26,38 @@ public class UserController {
 
     // Создать нового пользователя
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<?> createUser(@RequestBody User user) {
+        if (userService.existsByUsername(user.getUsername())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("Ошибка: имя пользователя уже занято!");
+        }
         User createdUser = userService.createUser(user);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
     // Обновить пользователя
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-        Optional<User> existingUser = userService.findById(id);
-        if (existingUser.isPresent()) {
-            user.setId(id);
-            User updatedUser = userService.updateUser(user);
-            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
-        }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody User newUserData) {
+        return userService.findById(id)
+                .map(existingUser -> {
+                    // Проверка уникальности имени (если передано новое имя)
+                    if (newUserData.getUsername() != null &&
+                            !newUserData.getUsername().equals(existingUser.getUsername()) &&
+                            userService.existsByUsername(newUserData.getUsername())) {
+                        return ResponseEntity.status(HttpStatus.CONFLICT)
+                                .body("Ошибка: имя пользователя уже занято!");
+                    }
+
+                    // Обновляем только переданные поля
+                    if (newUserData.getUsername() != null) existingUser.setUsername(newUserData.getUsername());
+                    if (newUserData.getPassword() != null) existingUser.setPassword(newUserData.getPassword());
+                    if (newUserData.getRole() != null) existingUser.setRole(newUserData.getRole());
+
+                    // Сохраняем обновленного пользователя
+                    User updatedUser = userService.updateUser(existingUser);
+                    return ResponseEntity.ok(updatedUser);
+                })
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
     // Удалить пользователя

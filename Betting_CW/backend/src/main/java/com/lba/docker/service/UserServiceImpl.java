@@ -22,6 +22,10 @@ public class UserServiceImpl implements UserService {
     public Optional<User> findByUsername(String username) {
         return Optional.ofNullable(userRepository.findByUsername(username));
     }
+    public boolean existsByUsername(String username) {
+        return userRepository.existsByUsername(username);
+    }
+
 
     @Override
     public User createUser(User user) {
