@@ -1,5 +1,6 @@
 package com.lba.docker.service;
 
+import com.lba.docker.entity.EventType;
 import com.lba.docker.entity.SportsEvent;
 import com.lba.docker.repository.SportsEventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class SportsEventServiceImpl implements SportsEventService {
     }
 
     @Override
-    public List<SportsEvent> getEventsByType(SportsEvent.EventType eventType) {
+    public List<SportsEvent> getEventsByType(EventType eventType) {
         return sportsEventRepository.findByEventType(eventType);
     }
 

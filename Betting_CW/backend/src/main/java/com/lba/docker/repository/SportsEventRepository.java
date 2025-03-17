@@ -1,5 +1,6 @@
 package com.lba.docker.repository;
 
+import com.lba.docker.entity.EventType;
 import com.lba.docker.entity.SportsEvent;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -10,7 +11,7 @@ import java.util.List;
 @Repository
 public interface SportsEventRepository extends JpaRepository<SportsEvent, Long> {
     // Найти все события по типу
-    List<SportsEvent> findByEventType(SportsEvent.EventType eventType);
+    List<SportsEvent> findByEventType(EventType eventType);
 
     // Найти событие по названию
     SportsEvent findByName(String name);

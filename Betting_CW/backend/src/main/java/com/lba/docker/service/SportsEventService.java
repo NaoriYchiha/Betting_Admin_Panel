@@ -1,5 +1,6 @@
 package com.lba.docker.service;
 
+import com.lba.docker.entity.EventType;
 import com.lba.docker.entity.SportsEvent;
 
 import java.time.LocalDateTime;
@@ -8,7 +9,7 @@ import java.util.Optional;
 
 public interface SportsEventService {
     List<SportsEvent> getAllEvents();
-    List<SportsEvent> getEventsByType(SportsEvent.EventType eventType);
+    List<SportsEvent> getEventsByType(EventType eventType);
     Optional<SportsEvent> getEventById(Long eventId);
     Optional<SportsEvent> getEventByName(String name);
     List<SportsEvent> getEventsInRange(LocalDateTime startDate, LocalDateTime endDate);
