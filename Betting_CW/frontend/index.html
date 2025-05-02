@@ -89,26 +89,25 @@
 <script>
     async function fetchUsers() {
         try {
-            const response = await fetch("http://127.0.0.1:8080/api/users"); // Запрос к бэкенду
-            if (!response.ok) {
-                throw new Error(`Ошибка: ${response.status}`);
-            }
-
-            const users = await response.json(); // Парсим ответ в формат JSON
-
-            const userList = document.getElementById("userList");
-            userList.innerHTML = ""; // Очищаем перед добавлением
-
-            users.forEach(user => {
-                const div = document.createElement("div");
-                div.className = "user";
-                div.textContent = `ID: ${user.id}, Имя: ${user.name}, Роль: ${user.role}`;
-                userList.appendChild(div);
+            const response = await fetch("http://127.0.0.1:8080/api/users", {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             });
 
+            if (!response.ok) {
+                const errorDetails = await response.text();
+                console.error("Ошибка при получении пользователей:", errorDetails);
+                document.getElementById("createUserResult").textContent = `Ошибка при получении пользователей: ${errorDetails}`;
+                return;
+            }
+
+            const users = await response.json();
+            // Обработай полученных пользователей
         } catch (error) {
-            document.getElementById("userList").textContent = "Ошибка загрузки данных!";
-            console.error("Ошибка загрузки:", error);
+            console.error("Ошибка при отправке запроса:", error);
+            document.getElementById("createUserResult").textContent = "Ошибка при получении пользователей!";
         }
     }
 

@@ -3,15 +3,12 @@ package com.lba.docker.controller;
 
 import com.lba.docker.entity.EventType;
 import com.lba.docker.entity.SportsEvent;
-import com.lba.docker.entity.User;
-import com.lba.docker.service.SportsEventService;
 import com.lba.docker.service.SportsEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,10 +22,10 @@ public class SportsEventController {
     @GetMapping("/{eventType}")
 
     public ResponseEntity<List<SportsEvent>> getSportsEventByType(
-            String eventTypeStr) {
+            @PathVariable String eventType) {
         try {
-            EventType eventType = EventType.valueOf(eventTypeStr.toUpperCase()); // Преобразование строки в enum
-            List<SportsEvent> sportsEvents = sportsEventService.getEventsByType(eventType);
+            EventType eventTypeStr = EventType.valueOf(eventType.toUpperCase()); // Преобразование строки в enum
+            List<SportsEvent> sportsEvents = sportsEventService.getEventsByType(eventTypeStr);
 
             if (sportsEvents.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

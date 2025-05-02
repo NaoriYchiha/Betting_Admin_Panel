@@ -2,16 +2,16 @@ package com.lba.docker.controller;
 
 import com.lba.docker.entity.User;
 import com.lba.docker.service.UserService;
-import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/users")
 public class UserController {
 
@@ -25,13 +25,17 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createUser( @RequestBody User user) {
-        if (userService.existsByUsername(user.getUsername())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body("Ошибка: имя пользователя уже занято!");
+    public ResponseEntity<?> createUser(@RequestBody User user) {
+        try {
+            if (userService.existsByUsername(user.getUsername())) {
+                return ResponseEntity.status(HttpStatus.CONFLICT)
+                        .body("Ошибка: имя пользователя уже занято!");
+            }
+            User createdUser = userService.createUser(user);
+            return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("1Ошибка при создании пользователя");
         }
-        User createdUser = userService.createUser(user);
-        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

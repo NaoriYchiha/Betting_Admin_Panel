@@ -1,11 +1,5 @@
 version: "3.8"
 
-volumes:
-  mysql_data:
-
-networks:
-  betting_network:  # Новое имя сети
-
 services:
   betting_db:
     image: mysql:latest
@@ -18,22 +12,33 @@ services:
     ports:
       - "127.0.0.1:3306:3306"
     networks:
-      - betting_network  # Обновленное имя сети
+      - betting_network
+
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - betting_network
 
   betting:
-    restart: always
     build: ./backend
+    restart: always
     ports:
       - "127.0.0.1:8080:8080"
     depends_on:
       - betting_db
+      - redis
     environment:
-      SPRING_DATASOURCE_URL: 'jdbc:mysql://betting_db:3306/betting_db'
-      SPRING_DATASOURCE_USERNAME: 'root'
-      SPRING_DATASOURCE_PASSWORD: '121212'
-      JAVA_OPTS: '-Xmx512m'
+      SPRING_DATASOURCE_URL: jdbc:mysql://betting_db:3306/betting_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 121212
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      SPRING_CACHE_TYPE: redis
     networks:
-      - betting_network  # Обновленное имя сети
+      - betting_network
 
   frontend:
     build: ./frontend
@@ -42,4 +47,11 @@ services:
     depends_on:
       - betting
     networks:
-      - betting_network  # Обновленное имя сети
+      - betting_network
+
+volumes:
+  mysql_data:
+
+networks:
+  betting_network:
+    driver: bridge
