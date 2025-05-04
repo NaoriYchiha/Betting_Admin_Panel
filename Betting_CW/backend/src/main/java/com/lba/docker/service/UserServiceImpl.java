@@ -35,21 +35,30 @@ public class UserServiceImpl implements UserService {
     }
 
     // Сбросить кэш при создании пользователя
-    @CacheEvict(value = "users", allEntries = true)
+    @CacheEvict(value = {
+            "users",
+            "usersByUsername"
+    }, allEntries = true)
     @Override
     public User createUser(User user) {
         return userRepository.save(user);
     }
 
     // Сбросить кэш при обновлении пользователя
-    @CacheEvict(value = "users", key = "#user.id")
+    @CacheEvict(value = {
+            "users",
+            "usersByUsername"
+    }, allEntries = true)
     @Override
     public User updateUser(User user) {
         return userRepository.save(user);
     }
 
     // Сбросить кэш при удалении пользователя
-    @CacheEvict(value = "users", key = "#id")
+    @CacheEvict(value = {
+            "users",
+            "usersByUsername"
+    }, allEntries = true)
     @Override
     public void deleteUser(Long id) {
         userRepository.deleteById(id);

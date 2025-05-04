@@ -20,8 +20,27 @@ public class SportsEventController {
     @Autowired
     public SportsEventService sportsEventService;
 
-    @GetMapping("/{eventType}")
+    @GetMapping
+    public ResponseEntity<List<SportsEvent>> getAllEvents() {
+        List<SportsEvent> events = sportsEventService.getAllEvents();
+        return ResponseEntity.ok(events);
+    }
 
+    @GetMapping("/id/{id}")
+    public ResponseEntity<SportsEvent> getEventById(@PathVariable Long id) {
+        return sportsEventService.getEventById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/name/{name}")
+    public ResponseEntity<SportsEvent> getEventByName(@PathVariable String name) {
+        return sportsEventService.getEventByName(name)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/eventType/{eventType}")
     public ResponseEntity<List<SportsEvent>> getSportsEventByType(
             @PathVariable String eventType) {
         try {

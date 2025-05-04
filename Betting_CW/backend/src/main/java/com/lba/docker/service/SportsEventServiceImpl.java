@@ -49,18 +49,36 @@ public class SportsEventServiceImpl implements SportsEventService {
     }
 
     @Override
-    @CacheEvict(value = "sportEvents", allEntries = true)
+    @CacheEvict(value = {
+            "sportEvents",
+            "sportEventsByType",
+            "sportEventById",
+            "sportEventByName",
+            "sportEventInRange"
+    }, allEntries = true)
     public SportsEvent createEvent(SportsEvent event) {
         return sportsEventRepository.save(event);
     }
 
-    @CacheEvict(value = "sportEvents", key = "#event")
+    @CacheEvict(value = {
+            "sportEvents",
+            "sportEventsByType",
+            "sportEventById",
+            "sportEventByName",
+            "sportEventInRange"
+    }, allEntries = true)
     @Override
     public SportsEvent updateEvent(SportsEvent event) {
         return sportsEventRepository.save(event);
     }
 
-    @CacheEvict(value = "sportEvents", key = "#eventId")
+    @CacheEvict(value = {
+            "sportEvents",
+            "sportEventsByType",
+            "sportEventById",
+            "sportEventByName",
+            "sportEventInRange"
+    }, allEntries = true)
     @Override
     public void deleteEvent(Long eventId) {
         sportsEventRepository.deleteById(eventId);
