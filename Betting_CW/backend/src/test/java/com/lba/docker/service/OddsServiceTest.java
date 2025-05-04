@@ -50,7 +50,7 @@ public class OddsServiceTest {
 
     @Test
     public void testGetOddsByValue() {
-        when(oddsRepository.findByValue(2.5)).thenReturn(testOdds);
+        when(oddsRepository.findByValue(2.5)).thenReturn(Optional.ofNullable(testOdds));
 
         Optional<Odds> foundOdds = oddsService.getOddsByValue(2.5);
         assertTrue(foundOdds.isPresent());
