@@ -4,11 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71733857-d905-4d44-998f-7b2e3b1ac3ad" name="Changes" comment="Add Redis-Cacheable &quot;aka&quot; cache for Odds &amp; Written Controller for odds">
+    <list default="true" id="71733857-d905-4d44-998f-7b2e3b1ac3ad" name="Changes" comment="Updated(fixed) caching in services">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/ExportSession.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/ImportSession.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/ImportStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/repository/ExportSessionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/repository/ImportSessionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/ExportSessionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/ExportSessionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/ImportSessionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/ImportSessionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/lba/docker/service/ChangeLogServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/lba/docker/service/ExportSessionServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/lba/docker/service/ImportSessionServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/SportsEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/SportsEventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/SportsEventServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/SportsEventServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/Bet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/TransactionLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/ChangeLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/UserBalance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/repository/BetRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/repository/TransactionLogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/repository/ChangeLogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/repository/UserBalanceRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/BetService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/BetServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/TransactionLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/ChangeLogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/TransactionLogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/ChangeLogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/UserBalanceService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/UserBalanceServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/lba/docker/service/BetServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/lba/docker/service/TransactionLogServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/lba/docker/service/UserBalanceServiceTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +114,67 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Betting_CW">
+  <component name="RunManager" selected="JUnit.ExportSessionServiceTest">
+    <configuration name="ChangeLogServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="docker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lba.docker.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lba.docker.service" />
+      <option name="MAIN_CLASS_NAME" value="com.lba.docker.service.ChangeLogServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExportSessionServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="docker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lba.docker.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lba.docker.service" />
+      <option name="MAIN_CLASS_NAME" value="com.lba.docker.service.ExportSessionServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImportSessionServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="docker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lba.docker.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lba.docker.service" />
+      <option name="MAIN_CLASS_NAME" value="com.lba.docker.service.ImportSessionServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OddsServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="docker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lba.docker.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lba.docker.service" />
+      <option name="MAIN_CLASS_NAME" value="com.lba.docker.service.OddsServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="docker" />
       <extension name="coverage">
@@ -115,11 +200,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.ChangeLogServiceTest" />
+      <item itemvalue="JUnit.ExportSessionServiceTest" />
+      <item itemvalue="JUnit.ImportSessionServiceTest" />
+      <item itemvalue="JUnit.OddsServiceTest" />
       <item itemvalue="JUnit.UserServiceTest" />
       <item itemvalue="Spring Boot.Betting_CW" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ExportSessionServiceTest" />
+        <item itemvalue="JUnit.ImportSessionServiceTest" />
+        <item itemvalue="JUnit.ChangeLogServiceTest" />
+        <item itemvalue="JUnit.OddsServiceTest" />
         <item itemvalue="JUnit.UserServiceTest" />
       </list>
     </recent_temporary>
@@ -152,7 +245,8 @@
       <workItem from="1746277618709" duration="8641000" />
       <workItem from="1746290408852" duration="16000" />
       <workItem from="1746290554767" duration="16000" />
-      <workItem from="1746377009125" duration="6847000" />
+      <workItem from="1746377009125" duration="7283000" />
+      <workItem from="1746432043276" duration="5023000" />
     </task>
     <task id="LOCAL-00001" summary="Added security configuration for API handling">
       <option name="closed" value="true" />
@@ -290,7 +384,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746384701626</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Updated(fixed) caching in services">
+      <option name="closed" value="true" />
+      <created>1746384870287</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1746384870287</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,6 +427,7 @@
     <MESSAGE value="Add Redis-Cacheable &quot;aka&quot; cache for User" />
     <MESSAGE value="Add Redis-Cacheable &quot;aka&quot; cache for SportsEvent" />
     <MESSAGE value="Add Redis-Cacheable &quot;aka&quot; cache for Odds &amp; Written Controller for odds" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Redis-Cacheable &quot;aka&quot; cache for Odds &amp; Written Controller for odds" />
+    <MESSAGE value="Updated(fixed) caching in services" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated(fixed) caching in services" />
   </component>
 </project>
