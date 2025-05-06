@@ -40,14 +40,14 @@ services:
     networks:
       - betting_network
 
-  frontend:
-    build: ./frontend
-    ports:
-      - "127.0.0.1:3000:80"
-    depends_on:
-      - betting
-    networks:
-      - betting_network
+#  frontend:
+#    build: ./frontend
+#    ports:
+#      - "127.0.0.1:3000:80"
+#    depends_on:
+#      - betting
+#    networks:
+#      - betting_network
 
 volumes:
   mysql_data:
