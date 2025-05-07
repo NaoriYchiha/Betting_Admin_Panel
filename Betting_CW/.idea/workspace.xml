@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71733857-d905-4d44-998f-7b2e3b1ac3ad" name="Changes" comment="Created ImportSession test class">
+    <list default="true" id="71733857-d905-4d44-998f-7b2e3b1ac3ad" name="Changes" comment=" Changed port for frontend using. Commented frontend image.">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/betting_db.vn3jxg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/betting_db.vn3jxg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/OddsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/OddsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/SportsEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/SportsEventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +40,9 @@
         <option name="mavenHome" value="Use Maven wrapper" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/frontend/package.json" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -225,7 +230,10 @@
       <workItem from="1746377009125" duration="7283000" />
       <workItem from="1746432043276" duration="6005000" />
       <workItem from="1746472041173" duration="415000" />
-      <workItem from="1746523961625" duration="297000" />
+      <workItem from="1746523961625" duration="1359000" />
+      <workItem from="1746561380627" duration="3746000" />
+      <workItem from="1746609173380" duration="621000" />
+      <workItem from="1746616197369" duration="133000" />
     </task>
     <task id="LOCAL-00001" summary="Added security configuration for API handling">
       <option name="closed" value="true" />
@@ -427,7 +435,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746438175937</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary=" Changed port for frontend using. Commented frontend image.">
+      <option name="closed" value="true" />
+      <created>1746524748522</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1746524748522</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,7 +461,6 @@
     <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added security configuration for API handling" />
     <MESSAGE value="Added the entity classes" />
     <MESSAGE value="Added the repositories and services for entities classes" />
     <MESSAGE value="Added the tests for methods" />
@@ -470,6 +485,7 @@
     <MESSAGE value="Created ExportSession test" />
     <MESSAGE value="Created ImportSession" />
     <MESSAGE value="Created ImportSession test class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created ImportSession test class" />
+    <MESSAGE value=" Changed port for frontend using. Commented frontend image." />
+    <option name="LAST_COMMIT_MESSAGE" value=" Changed port for frontend using. Commented frontend image." />
   </component>
 </project>
