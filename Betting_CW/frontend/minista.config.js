@@ -139,5 +139,16 @@ export default defineConfig({
             indent_size: 2,
         },
     },
-    vite: {},
+    vite: {
+        server: {
+            port: 8080,
+            proxy: {
+                "/api": {
+                    target: "http://localhost:8080",
+                    changeOrigin: true,
+                    rewrite: (path) => path.replace(/^\/api/, "/api"),
+                },
+            },
+        },
+    },
 })
