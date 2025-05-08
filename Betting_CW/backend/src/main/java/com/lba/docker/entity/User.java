@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
@@ -27,6 +28,12 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    public User(String username, String password, Role role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
 
     public enum Role {
         USER, ADMIN
