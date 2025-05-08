@@ -37,6 +37,7 @@ services:
       SPRING_DATA_REDIS_HOST: redis
       SPRING_DATA_REDIS_PORT: 6379
       SPRING_CACHE_TYPE: redis
+      JWT_SECRET: super-secret-key
     networks:
       - betting_network
 

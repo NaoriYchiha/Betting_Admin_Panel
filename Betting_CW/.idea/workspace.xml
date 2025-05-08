@@ -4,8 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71733857-d905-4d44-998f-7b2e3b1ac3ad" name="Changes" comment=" Changed port for frontend using. Commented frontend image.">
+    <list default="true" id="71733857-d905-4d44-998f-7b2e3b1ac3ad" name="Changes" comment=" Changed port for mySQL for 3306 to 3307 on localhost">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/config/JwtProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/AuthRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/AuthResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/controller/RegisterRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/security/CustomUserDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/security/JwtAuthentication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/security/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/security/JwtService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/security/MyUserDetailService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/betting_db.vn3jxg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/betting_db.vn3jxg.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
@@ -13,6 +25,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfcd3eaa-e209-46a1-88c9-1c12e67f2ff3/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lba/docker/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/lba/docker/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/lba/docker/service/UserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,37 +71,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;H:/programming/CW_3Course/Betting_Admin_Panel/Betting_CW&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;settings.editor.splitter.proportion&quot;: &quot;0.20756173&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "H:/programming/CW_3Course/Betting_Admin_Panel/Betting_CW",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "settings.editor.splitter.proportion": "0.20756173",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="H:\programming\CW_3Course\Betting_Admin_Panel\Betting_CW\backend" />
@@ -233,7 +252,8 @@
       <workItem from="1746523961625" duration="1359000" />
       <workItem from="1746561380627" duration="3746000" />
       <workItem from="1746609173380" duration="621000" />
-      <workItem from="1746616197369" duration="133000" />
+      <workItem from="1746616197369" duration="3090000" />
+      <workItem from="1746694098927" duration="8065000" />
     </task>
     <task id="LOCAL-00001" summary="Added security configuration for API handling">
       <option name="closed" value="true" />
@@ -443,7 +463,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746524748522</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary=" Changed port for mySQL for 3306 to 3307 on localhost">
+      <option name="closed" value="true" />
+      <created>1746616444474</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1746616444474</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,7 +489,6 @@
     <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added the entity classes" />
     <MESSAGE value="Added the repositories and services for entities classes" />
     <MESSAGE value="Added the tests for methods" />
     <MESSAGE value="Added a test controller for User" />
@@ -486,6 +513,7 @@
     <MESSAGE value="Created ImportSession" />
     <MESSAGE value="Created ImportSession test class" />
     <MESSAGE value=" Changed port for frontend using. Commented frontend image." />
-    <option name="LAST_COMMIT_MESSAGE" value=" Changed port for frontend using. Commented frontend image." />
+    <MESSAGE value=" Changed port for mySQL for 3306 to 3307 on localhost" />
+    <option name="LAST_COMMIT_MESSAGE" value=" Changed port for mySQL for 3306 to 3307 on localhost" />
   </component>
 </project>

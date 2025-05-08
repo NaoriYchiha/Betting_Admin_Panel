@@ -43,7 +43,7 @@ public class UserServiceTest {
 
     @Test
     public void testFindByUsername() {
-        when(userRepository.findByUsername("testuser")).thenReturn(testUser);
+        when(userRepository.findByUsername("testuser")).thenReturn(Optional.ofNullable(testUser));
 
         Optional<User> foundUser = userService.findByUsername("testuser");
         assertTrue(foundUser.isPresent());
