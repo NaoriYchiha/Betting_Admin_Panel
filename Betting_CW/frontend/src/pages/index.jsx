@@ -1,11 +1,14 @@
+import LoginForm from "@/sections/LoginForm";
+
 export const metadata = {
-    title: 'Home',
+    title: 'Registration',
+    isLayoutsHidden: true,
 }
 
 export default function () {
   return (
     <>
-        <h1>HOME</h1>
+        <LoginForm />
     </>
   )
 }

@@ -8,6 +8,7 @@ export default function (props) {
     const {
         children,
         title,
+        isLayoutsHidden = false,
     } = props
 
     return (
@@ -16,11 +17,11 @@ export default function (props) {
                 <title>BetOps Central | {title}</title>
                 <script src="/src/main.js" type="module" />
             </Head>
-            <Header/>
+            { !isLayoutsHidden && <Header/>}
             <Content>
                 {children}
             </Content>
-            <Footer/>
+            { !isLayoutsHidden && <Footer/>}
         </>
     )
 }

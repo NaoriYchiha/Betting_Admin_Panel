@@ -2,7 +2,9 @@
   --color-dark: #000;
   --color-light: #fff;
 
+  --color-dark-alt: #121515;
   --color-accent: #FDD92A;
+  --color-accent-hover: #efcb17;
   --color-light-grey: #888888;
   --color-grey: #5A5A5A;
   --color-light-blue: #EEF7FF;
@@ -21,7 +23,7 @@
   --font-family-playfair: 'PlayfairDisplay', serif;
   --font-family-inriaSerif: 'InriaSerif', serif;
 
-  --container-width: #{$container-width};
+  --container-width: #{$container-width}px;
   --container-padding-x: 15px;
 
   --transition-duration: 0.2s;

@@ -1,0 +1,17 @@
+.field {
+  display: grid;
+  gap: 10px;
+
+  &__label {
+    font-size: 14px;
+    color: var(--color-light-grey);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  &__input {
+    padding: fluid(16, 12) fluid(20, 14);
+    background-color: var(--color-light-blue);
+    border: none;
+  }
+}
