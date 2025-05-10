@@ -1,9 +1,9 @@
-.login-form {
+.form {
   @include abs-center;
 
-  max-width: 400px;
+  max-width: fluid(400, 300);
   width: 100%;
-  padding: 38px 40px 24px;
+  padding: fluid(38, 20) fluid(40, 20) fluid(24, 16);
   min-height: 650px;
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius-block);
@@ -27,7 +27,6 @@
   }
 
   &__fields {
-    max-width: 315px;
     width: 100%;
     flex-grow: 1;
     display: flex;

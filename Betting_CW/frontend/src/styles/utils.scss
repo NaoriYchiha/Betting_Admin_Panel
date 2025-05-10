@@ -3,6 +3,11 @@
   max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
   margin-inline: auto;
   padding-inline: var(--container-padding-x);
+  min-height: 100vh;
+
+  &--reletive {
+    position: relative;
+  }
 }
 
 .visually-hidden {
