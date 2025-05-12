@@ -51,7 +51,7 @@ const Form = (props) => {
             <form
                 className={classNames(className, 'form')}
                 aria-labelledby={title}
-                data-js-form=""
+                {...{[`data-js-${className}`] : ''}}
             >
                 <header className="form__header">
                     <h1

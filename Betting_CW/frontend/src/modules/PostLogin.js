@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const rootSelector = '[data-js-form]'
+const rootSelector = '[data-js-login-form]'
 
-class PostRegister {
+class PostLogin {
     selectors = {
         root: rootSelector,
         fieldUsername: '[data-js-form-field-username]',
@@ -12,9 +12,9 @@ class PostRegister {
 
     constructor() {
         this.rootElement = document.querySelector(this.selectors.root)
-        this.usernameElement = this.rootElement.querySelector(this.selectors.fieldUsername)
-        this.passwordElement = this.rootElement.querySelector(this.selectors.fieldPassword)
-        this.buttonElement = this.rootElement.querySelector(this.selectors.button)
+        this.usernameElement = this.rootElement?.querySelector(this.selectors.fieldUsername)
+        this.passwordElement = this.rootElement?.querySelector(this.selectors.fieldPassword)
+        this.buttonElement = this.rootElement?.querySelector(this.selectors.button)
 
         this.bindEvents()
     }
@@ -28,17 +28,23 @@ class PostRegister {
         }
 
         axios.post(
-            'api/auth/register', {
+            'api/auth/login', {
                 ...userFormData,
             }
         ).then(response => {
-            console.log(response)
+            console.log(response.data)
+
+            localStorage.setItem('token', response.data.token)
+
+            if(localStorage.getItem('token')) {
+                window.location.href = '/main'
+            }
         })
     }
 
     bindEvents() {
-        this.buttonElement.addEventListener('click', this.onButtonClick)
+        this.buttonElement?.addEventListener('click', this.onButtonClick)
     }
 }
 
-export default PostRegister
+export default PostLogin
