@@ -8,6 +8,7 @@ export const metadata = {
 export default function () {
     return (
         <Form
+            className="registration-form"
             formTitle="Register"
             formDescription="Create your account"
             formLink={

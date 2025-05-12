@@ -1,9 +1,11 @@
 import './Form.scss'
 import Field from "@/components/Field";
 import Button from "@/components/Button";
+import classNames from "classnames";
 
 const Form = (props) => {
     const {
+        className,
         formTitle,
         formDescription,
         formLink,
@@ -16,23 +18,41 @@ const Form = (props) => {
     const fieldItems = [
         {
             label: "USERNAME",
-            fieldId: "username",
-            fieldName: "username",
-            placeholder: "user1234",
-            inputType: "text",
+            inputParams: {
+                id: "username",
+                name: "username",
+                placeholder: "user1234",
+                type: "text",
+                required: true,
+                minLength: 4,
+                maxLength: 32,
+                ['data-js-form-field-username']: '',
+            }
         },
         {
             label: "PASSWORD",
-            fieldId: "password",
-            fieldName: "password",
-            placeholder: "Password_1234",
-            inputType: "password",
+            inputParams: {
+                id: "password",
+                name: "password",
+                placeholder: "Password_1234",
+                type: "password",
+                minLength: 8,
+                maxLength: 20,
+                required: true,
+                pattern: '^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).+$',
+                title: "Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters",
+                ['data-js-form-field-password']: '',
+            }
         },
     ]
 
     return (
         <div className="container container--reletive">
-            <form className="form" aria-labelledby={title}>
+            <form
+                className={classNames(className, 'form')}
+                aria-labelledby={title}
+                data-js-form=""
+            >
                 <header className="form__header">
                     <h1
                         className="form__title h3"
@@ -59,6 +79,7 @@ const Form = (props) => {
                         label={buttonLabel}
                         type="submit"
                         mode="logReg"
+                        dataAtr
                     />
                 </div>
             </form>

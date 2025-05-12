@@ -3,22 +3,19 @@ import './Field.scss'
 const Field = (props) => {
     const {
         label,
-        fieldName,
-        fieldId,
-        placeholder,
-        inputType,
+        inputParams = {},
     } = props
 
     return (
         <div className="field">
-            <label className="field__label" htmlFor={fieldId}>{label}</label>
+            <label className="field__label" htmlFor={inputParams.id}>{label}</label>
             <input
                 className="field__input"
-                type={inputType}
-                id={fieldId}
-                name={fieldName}
-                placeholder={placeholder}
+                { ...inputParams }
             />
+            <span className="field__errors" data-js-form-field-errors="">
+
+            </span>
         </div>
     )
 }

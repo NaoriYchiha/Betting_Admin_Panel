@@ -9,6 +9,7 @@ export default function () {
   return (
     <>
         <Form
+            className="login-form"
             formTitle="Login"
             formDescription="Sign to your account"
             formLink={
