@@ -9,6 +9,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.Cookie;
 import java.io.IOException;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -24,36 +25,39 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
             throws ServletException, IOException {
-        String token = extractToken(request);
+        // Извлекаем токен из куки
+        String token = extractTokenFromCookie(request);
 
-        if (token != null && jwtService.validateToken(token, getUserDetails(token))) {
-            SecurityContextHolder.getContext().setAuthentication(getAuthentication(token));
+        if (token != null) {
+            CustomUserDetails userDetails = getUserDetails(token);
+
+            if (userDetails != null && jwtService.validateToken(token, userDetails)) {
+                SecurityContextHolder.getContext().setAuthentication(new JwtAuthentication(userDetails));
+            }
         }
 
         filterChain.doFilter(request, response);
     }
 
-    private String extractToken(HttpServletRequest request) {
-        String header = request.getHeader("Authorization");
-        if (header != null && header.startsWith("Bearer ")) {
-            return header.substring(7);  // Extracts the token
+    // Метод извлечения токена из куки
+    private String extractTokenFromCookie(HttpServletRequest request) {
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                if ("token".equals(cookie.getName())) {
+                    return cookie.getValue();
+                }
+            }
         }
         return null;
     }
 
+    // Получаем данные пользователя из токена
     private CustomUserDetails getUserDetails(String token) {
-        String username = jwtService.extractUsername(token);
-        CustomUserDetails userDetails = (CustomUserDetails) userDetailService.loadUserByUsername(username);
-
-        if (userDetails == null) {
-            throw new UsernameNotFoundException("User not found with username: " + username);
+        try {
+            String username = jwtService.extractUsername(token);
+            return (CustomUserDetails) userDetailService.loadUserByUsername(username);
+        } catch (Exception e) {
+            return null;  // Если произошла ошибка при получении пользователя, возвращаем null
         }
-
-        return userDetails;
-    }
-
-    private JwtAuthentication getAuthentication(String token) {
-        CustomUserDetails userDetails = getUserDetails(token);
-        return new JwtAuthentication(userDetails);
     }
 }
