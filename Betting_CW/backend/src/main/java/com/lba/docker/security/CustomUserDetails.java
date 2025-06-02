@@ -1,12 +1,14 @@
 package com.lba.docker.security;
 
 import com.lba.docker.entity.User;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
 
+@Getter
 public class CustomUserDetails implements UserDetails {
 
     private final User user;
