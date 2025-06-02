@@ -86,7 +86,7 @@ public class AuthController {
             var userDetails = (CustomUserDetails) userDetailsService.loadUserByUsername(username);
 
             if (jwtService.validateToken(token, userDetails)) {
-                return ResponseEntity.ok().body("Authorized as: " + username);
+                return ResponseEntity.ok(username);
             }
         }
 
