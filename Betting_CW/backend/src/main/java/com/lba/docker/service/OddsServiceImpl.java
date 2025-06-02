@@ -33,21 +33,26 @@ public class OddsServiceImpl implements OddsService {
         return oddsRepository.findByValue(value);  // если уже возвращается Optional
     }
 
+    @Override
+    @Cacheable(value = "AllOdds")
+    public List<Odds> getAllOdds() {
+        return oddsRepository.findAll();
+    }
 
     @Override
-    @CacheEvict(value = {"oddsByEvent", "oddsByValue", "oddsById"}, allEntries = true)
+    @CacheEvict(value = {"oddsByEvent", "oddsByValue", "oddsById", "AllOdds"}, allEntries = true)
     public Odds createOdds(Odds odds) {
         return oddsRepository.save(odds);
     }
 
     @Override
-    @CacheEvict(value = {"oddsByEvent", "oddsByValue", "oddsById"}, allEntries = true)
+    @CacheEvict(value = {"oddsByEvent", "oddsByValue", "oddsById", "AllOdds"}, allEntries = true)
     public Odds updateOdds(Odds odds) {
         return oddsRepository.save(odds);
     }
 
     @Override
-    @CacheEvict(value = {"oddsByEvent", "oddsByValue", "oddsById"}, allEntries = true)
+    @CacheEvict(value = {"oddsByEvent", "oddsByValue", "oddsById", "AllOdds"}, allEntries = true)
     public void deleteOdds(Long oddsId) {
         oddsRepository.deleteById(oddsId);
     }

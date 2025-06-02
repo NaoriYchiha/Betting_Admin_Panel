@@ -24,6 +24,16 @@ public class OddsController {
         Optional<Odds> odds = oddsService.getOddById(id);
         return odds.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @GetMapping
+    public ResponseEntity<List<Odds>> getAllOdds(){
+        List<Odds> oddsList = oddsService.getAllOdds();
+        if (oddsList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(oddsList, HttpStatus.OK);
+    }
+
     @GetMapping("/event/{eventId}")
     public ResponseEntity<List<Odds>> getOddsByEvent(@PathVariable Long eventId) {
         List<Odds> oddsList = oddsService.getOddsByEvent(eventId);

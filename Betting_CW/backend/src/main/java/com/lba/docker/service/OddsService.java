@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface OddsService {
+    List<Odds> getAllOdds();
     List<Odds> getOddsByEvent(Long eventId);
     Optional<Odds> getOddById(Long OddId);
     Optional<Odds> getOddsByValue(double value);

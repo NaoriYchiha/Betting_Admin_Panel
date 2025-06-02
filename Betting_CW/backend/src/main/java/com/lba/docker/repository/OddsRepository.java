@@ -16,4 +16,6 @@ public interface OddsRepository extends JpaRepository<Odds, Long> {
 
     // Найти коэффициент по значению
     Optional<Odds>  findByValue(double value);
+
+    List<Odds> findAll();
 }
