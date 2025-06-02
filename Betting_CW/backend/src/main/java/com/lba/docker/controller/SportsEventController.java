@@ -44,7 +44,7 @@ public class SportsEventController {
     public ResponseEntity<List<SportsEvent>> getSportsEventByType(
             @PathVariable String eventType) {
         try {
-            EventType eventTypeStr = EventType.valueOf(eventType.toUpperCase()); // Преобразование строки в enum
+            EventType eventTypeStr = EventType.valueOf(eventType.toUpperCase());
             List<SportsEvent> sportsEvents = sportsEventService.getEventsByType(eventTypeStr);
 
             if (sportsEvents.isEmpty()) {
@@ -54,7 +54,7 @@ public class SportsEventController {
             return ResponseEntity.ok(sportsEvents);
 
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null); // Если передан неверный тип события
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
 
@@ -72,12 +72,10 @@ public class SportsEventController {
 
         return sportsEventService.getEventById(id)
                 .map(existingEvent -> {
-                    // Обновляем только непустые поля
                     if (newEventData.getName() != null) existingEvent.setName(newEventData.getName());
                     if (newEventData.getEventDate() != null) existingEvent.setEventDate(newEventData.getEventDate());
                     if (newEventData.getEventType() != null) existingEvent.setEventType(newEventData.getEventType());
 
-                    // Сохраняем обновленный объект
                     SportsEvent updatedEvent = sportsEventService.updateEvent(existingEvent);
                     return ResponseEntity.ok(updatedEvent);
                 })
