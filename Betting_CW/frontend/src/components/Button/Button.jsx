@@ -11,7 +11,8 @@ const Button = (props) => {
         /**
          *  '' (default) | 'logReg'
          */
-        mode = ''
+        mode = '',
+        dataAtr,
     } = props
 
     const isLink = href !== undefined
@@ -26,6 +27,7 @@ const Button = (props) => {
                 [`button--${mode}`]: mode,
             })}
             {...specificProps}
+            data-js-form-button={dataAtr}
         >
             {label}
         </Component>
