@@ -16,6 +16,6 @@ public class SwaggerConfig {
                 .info(new Info().title("Betting Admin Panel API")
                         .description("API documentation for Betting Admin Panel")
                         .version("v1"))
-                .servers(List.of(new Server().url("http://localhost:8080"))); // Указываем URL сервера
+                .servers(List.of(new Server().url("http://localhost:8080")));
     }
 }
