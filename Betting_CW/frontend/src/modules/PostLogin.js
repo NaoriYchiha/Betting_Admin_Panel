@@ -34,11 +34,6 @@ class PostLogin {
         ).then(response => {
             console.log(response.data)
 
-            localStorage.setItem('token', response.data.token)
-
-            if(localStorage.getItem('token')) {
-                window.location.href = '/main'
-            }
         })
     }
 

@@ -1,5 +1,5 @@
 export const metadata = {
-    title: 'My account',
+    title: 'Home',
 }
 
 export default function () {
